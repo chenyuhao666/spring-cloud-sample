@@ -13,14 +13,24 @@ repositories {
 }
 
 dependencies {
-	compile group: 'org.projectlombok', name: 'lombok', version: '1.18.10'
-	compile group: 'com.alibaba', name: 'druid', version: '1.1.20'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	//数据库
 	implementation 'mysql:mysql-connector-java'
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.1'
+	//连接池
+    compile group: 'com.alibaba', name: 'druid-spring-boot-starter', version: '1.1.20'
+	//redis
 	// implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+	//kafka
 	// implementation 'org.springframework.kafka:spring-kafka:2.1.6.RELEASE'
+	//json
 	implementation 'com.alibaba:fastjson:1.2.54'
+	//lombok
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.18.10'
+
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
 }
 
 test {
