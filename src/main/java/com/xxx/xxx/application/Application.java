@@ -5,6 +5,8 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Import;
 
 /**
@@ -12,11 +14,16 @@ import org.springframework.context.annotation.Import;
  * @Date: 2019/10/29 18:23
  * @Version 1.0
  */
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 @Import({DynamicDataSourceConfig.class})
-@MapperScan("com.xxx.xxx.application.infrastructure.repository.mysql")
-public class Application {
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+@MapperScan("com.xxx.xxx.application.infrastructure.dao.mysql")
+public class Application extends SpringBootServletInitializer {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
+    }
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        return builder.sources(Application.class);
     }
 }

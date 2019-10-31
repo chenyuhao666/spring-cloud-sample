@@ -1,0 +1,33 @@
+mybatis:
+  mapper-locations: classpath*:mapper/*Mapper.xml
+
+spring:
+  datasource:
+    druid:
+      master: #master datasource
+        url: jdbc:mysql://127.0.0.1:3306/demo?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&userTimezone=true&serverTimezone=UTC
+        username: root
+        password: 123456
+      slave: #slave datasource
+        url: jdbc:mysql://127.0.0.1:3306/demo2?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&userTimezone=true&serverTimezone=UTC
+        username: root
+        password: 123456
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      max-active: 20
+      initial-size: 1
+      max-wait: 60000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      min-idle: 1
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: select 1 from dual
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      filters: stat,wall,log4j
+  thymeleaf:
+    cache: false
+server:
+  port: 8080
+

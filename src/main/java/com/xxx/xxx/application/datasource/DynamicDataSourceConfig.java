@@ -89,7 +89,7 @@ public class DynamicDataSourceConfig {
 
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 
-        sessionFactoryBean.setMapperLocations(resolver.getResource(environment.getProperty("mybatis.mapper-locations")));
+        sessionFactoryBean.setMapperLocations(resolver.getResources(environment.getProperty("mybatis.mapper-locations")));
 
         return sessionFactoryBean.getObject();
     }
